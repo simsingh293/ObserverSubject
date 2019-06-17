@@ -32,14 +32,26 @@ public class PlayerController : MonoBehaviour
         _InputX = Input.GetAxis("Horizontal");
         _InputZ = Input.GetAxis("Vertical");
 
-        _MoveForce = new Vector3(0, 0.0f, _InputZ);
-        _MoveForce = _MoveForce * _MoveSpeed * Time.deltaTime;
-
-        _InputZ = _InputZ * _MoveSpeed * Time.deltaTime;
-
         _RotationForce = _InputX * _Sensitivity * Time.deltaTime;
 
         transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y + _RotationForce, transform.rotation.eulerAngles.z);
-        _rb.AddForce(transform.forward * _InputZ, ForceMode.Impulse);
+
+        if (Input.GetKey(KeyCode.W))
+        {
+            _rb.velocity = transform.forward * _MoveSpeed * Time.deltaTime;
+        }
+        else if (Input.GetKeyUp(KeyCode.W))
+        {
+            _rb.velocity = Vector3.zero;
+        }
+
+        if (Input.GetKey(KeyCode.S))
+        {
+            _rb.velocity = -transform.forward * _MoveSpeed * Time.deltaTime;
+        }
+        else if (Input.GetKeyUp(KeyCode.S))
+        {
+            _rb.velocity = Vector3.zero;
+        }
     }
 }
