@@ -39,6 +39,15 @@ public class MeleeWeapon : MonoBehaviour
         {
             _anim.SetTrigger("Swing3");
         }
+        else if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            _anim.SetTrigger("Swing4");
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha5))
+        {
+            _anim.SetTrigger("Swing5");
+        }
+
     }
 
 
