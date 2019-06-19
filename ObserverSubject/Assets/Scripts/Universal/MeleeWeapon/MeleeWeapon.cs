@@ -40,4 +40,8 @@ public class MeleeWeapon : MonoBehaviour
             _anim.SetTrigger("Swing3");
         }
     }
+
+
+    
+
 }
